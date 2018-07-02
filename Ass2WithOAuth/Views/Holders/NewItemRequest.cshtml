@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Product>
+
+
+
+
+
+
+@if (Model.Count()==0)
+{
+    <h2>No New Items</h2>
+
+}
+else
+{
+    <h2>New Items</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="AddNewItem" asp-route-id="@item.ProductID">Add new Item</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+
+}
+
+

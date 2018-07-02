@@ -1,0 +1,116 @@
+﻿
+
+
+@using Microsoft.AspNetCore.Http
+@using Ass2WithOAuth.Controllers
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var keys = HttpContextAccessor.HttpContext.Session.Keys;
+    int totalPrice = 0;
+
+
+}
+<head>
+    @section scripts{
+        <script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+        <script>
+            $("input:button").click(function () {
+                var NumOfItems = parseInt($("#keyNum").val());
+                if (NumOfItems == 0) {
+                    alert("There is nothing in Cart");
+                }
+                else {
+                    $("#check").submit();
+                }
+            });
+        </script>
+    }
+</head>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Store
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var k in keys)
+        {
+            var orderItem = HttpContextAccessor.HttpContext.Session.Get<OrderItem>(k);
+            var storeID = orderItem.StoreID;
+            totalPrice += orderItem.Quantity * orderItem.Product.Price;
+            String storeName = null;
+            if (storeID == 1)
+            {
+                storeName = "Melbourne CBD";
+            }
+            else if (storeID == 2)
+            {
+                storeName = "North Melbourne";
+            }
+            else if (storeID == 3)
+            {
+                storeName = "East Melbourne";
+            }
+            else if (storeID == 4)
+            {
+                storeName = "South Melbourne";
+            }
+            else if (storeID == 5)
+            {
+                storeName = "West Melbourne";
+            }
+        <tr>
+            <td>
+                @storeName
+            </td>
+            <td>
+                @orderItem.Product.Name
+            </td>
+            <td>
+                @orderItem.Product.Price
+            </td>
+            <td>
+                @orderItem.Quantity
+            </td>
+            <td>
+                <a asp-action="Remove" asp-route-id="@k">Remove</a>
+            </td>
+
+        </tr>
+        }
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <strong>Total</strong>
+            </td>
+            <td>
+                @totalPrice
+            </td>
+            <td>
+                <form asp-action="CardValidation" id="check">
+                    <input type="hidden" value="@keys.Count()" id="keyNum" />
+                    <input type="button" value="Check Out" id="checkout" class="btn btn-success" />
+                </form>
+
+
+            </td>
+        </tr>
+    </tbody>
+</table>

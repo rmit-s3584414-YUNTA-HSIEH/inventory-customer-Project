@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Ass2WithOAuth.Models
+@using Ass2WithOAuth.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    if (User.IsInRole(Constants.OwnerRole))
+    {
+        <ul class="nav navbar-nav">
+            <li><a asp-area="" asp-controller="Owner" asp-action="OwnerInventory">Inventory</a></li>
+            <li><a asp-area="" asp-controller="Owner" asp-action="StockRequest">Stock Request</a></li>
+        </ul>
+    }
+    else if (User.IsInRole(Constants.CBDHolderRole)|| User.IsInRole(Constants.EastHolderRole) || User.IsInRole(Constants.WestHolderRole)
+        || User.IsInRole(Constants.NorthHolderRole) || User.IsInRole(Constants.SouthHolderRole))
+    {
+        <ul class="nav navbar-nav">
+            <li><a asp-area="" asp-controller="Holders" asp-action="StoreInventory">Inventory</a></li>
+            <li><a asp-area="" asp-controller="Holders" asp-action="NewItemRequest">New Items</a></li>
+        </ul>
+    }
+    else if(User.IsInRole(Constants.CustomerRole))
+    {
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stores<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a asp-controller="Customer" asp-action="TheStoreInventory" asp-route-id="1">CBD</a></li>
+                    <li><a asp-controller="Customer" asp-action="TheStoreInventory" asp-route-id="2">North</a></li>
+                    <li><a asp-controller="Customer" asp-action="TheStoreInventory" asp-route-id="3">East</a></li>
+                    <li><a asp-controller="Customer" asp-action="TheStoreInventory" asp-route-id="4">South</a></li>
+                    <li><a asp-controller="Customer" asp-action="TheStoreInventory" asp-route-id="5">West</a></li>
+
+                </ul>
+            </li>
+            <li><a asp-area="" asp-controller="Customer" asp-action="Cart"><span class="glyphicon glyphicon-shopping-cart" style="color:lightskyblue" aria-hidden="true"></span> Cart</a></li>
+            <li><a asp-area="" asp-controller="Customer" asp-action="OrderHistory"><span class="glyphicon glyphicon glyphicon-th-list" style="color:dodgerblue" aria-hidden="true"></span> Order History</a></li>
+        </ul>
+
+    }
+
+}

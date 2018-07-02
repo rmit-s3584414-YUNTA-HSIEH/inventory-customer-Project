@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/images/1.jpg" alt="ASP.NET" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Owner: 1.Alter inventory   2.Deal with stock request
+                        <a class="btn btn-default" asp-area="" asp-controller="Account" asp-action="Login">
+                            Log in
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/images/2.jpg" alt="Visual Studio" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Store Holder: 1.Sent stock request to owner   2.Display product to customer
+                        <a class="btn btn-default" asp-area="" asp-controller="Account" asp-action="Login">
+                            Log in
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/images/5.jpg" alt="Package Management" class="img-responsive" />
+                <div class="carousel-caption" role="option">
+                    <p>
+                        Customer: 1.Add products into cart   2.Check out& credit card validation
+                        <a class="btn btn-default" asp-area="" asp-controller="Account" asp-action="Login">
+                            Log in
+                        </a>
+                    </p>
+                </div>
+            </div>        
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2>User Roles</h2>
+            <ul>
+                <li>Owner</li>
+                <li>Store Holder</li>
+                <li>Customer</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>Log in first </h2>
+            <ul>
+                <li>Functions will appear on navigation bar after log in</li>
+                <li>Each role has their  functions</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>Involve techniques</h2>
+            <ul>
+                <li> Entity Framework </li>
+                <li> MVC pattern</li>
+                <li>Media login (Google)</li>
+                <li>Web API</li>
+                <li>Data Annotation</li>
+                <li>Session</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>other techniques</h2>
+            <ul>
+                <li>HTML</li>                
+                <li>Javascript</li>
+                <li>Jquery</li>
+                <li>Bootstrap</li>
+                <li> SQL Server</li>
+                <li>Azure(sql operation studio)</li>
+            </ul>
+        </div>
+    </div>

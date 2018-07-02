@@ -1,0 +1,89 @@
+﻿@model Ass2WithOAuth.Models.StoreInventory
+
+<head>
+    @section scripts{
+        <script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+        <script>
+            $("input:button").click(function () {
+                var Quantity = parseInt($("#quantity").val());
+                var stockLevel = parseInt($("#stockLevel").val());
+                var orderItemQuantity = parseInt($("#orderItemQuantity").val());
+                if (stockLevel >= Quantity + orderItemQuantity) {
+                    $("#add").submit();
+                }
+                else if (orderItemQuantity != 0 && stockLevel < Quantity + orderItemQuantity)
+                {
+                    alert("Already has same order item in shopping cart with quantity:" + orderItemQuantity);   
+                }
+                else {
+                    alert("Quantity can't more than stock level:" + stockLevel);
+                }
+            });
+
+            $(document).ready(function () {
+                $(window).keydown(function (event) {
+                    if (event.keyCode == 13) {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+            });
+        </script>
+    }
+</head>
+
+@using Microsoft.AspNetCore.Http
+@using Ass2WithOAuth.Controllers
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var items = HttpContextAccessor.HttpContext.Session.Keys;
+    int count=0;
+    OrderItem orderItem = new OrderItem();
+    foreach(var i in items)
+    {
+        orderItem = HttpContextAccessor.HttpContext.Session.Get<OrderItem>(i);
+        if(orderItem.StoreID==Model.StoreID&&orderItem.ProductID==Model.ProductID)
+        {
+            break;
+        }
+        count++;
+    }
+    if(count==items.Count())
+    {
+        orderItem = new OrderItem();
+
+    }
+}
+
+<h2>Product Quantity</h2>
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@Html.DisplayNameFor(model => model.Product.Name):  <strong>@Html.DisplayFor(model => model.Product.Name)</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <form asp-action="AddToCart" id="add">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ProductID" />
+                        <input type="hidden" asp-for="StoreID" />
+                        <hr />
+                        <div class="form-group">
+                            <p>Available: @Html.DisplayFor(model => model.StockLevel)</p>
+                            <input id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="@Model.StockLevel">
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <input type="hidden" value="@Model.StockLevel" id="stockLevel" />
+                            <input type="hidden" value="@orderItem.Quantity" id="orderItemQuantity" />
+                            <input type="button" value="Add" class="btn btn-default" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

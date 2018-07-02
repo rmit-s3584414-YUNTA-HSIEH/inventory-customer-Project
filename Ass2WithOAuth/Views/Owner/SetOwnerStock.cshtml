@@ -1,0 +1,35 @@
+﻿@model Ass2WithOAuth.Models.OwnerInventory
+
+<h2> Set Product Stock</h2>
+
+
+<div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="SetOwnerStock">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProductID" />
+                <div class="form-group">
+                    <p class="h4">
+                        @Html.DisplayNameFor(model => model.Product.Name):
+                    </p>
+                    <p class="h4">
+                        <strong>
+                        @Html.DisplayFor(model => model.Product.Name)
+                        </strong>
+                    </p>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <label asp-for="StockLevel" class="control-label"></label>
+                    <input asp-for="StockLevel" class="form-control" />
+                    <span asp-validation-for="StockLevel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
