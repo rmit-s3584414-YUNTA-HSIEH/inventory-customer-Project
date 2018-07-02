@@ -1,0 +1,3 @@
+# inventory-customer-Project
+The main task of the project is to develop a web application which bases on three different roles(Owner、Store Holder、Customer)with their specific functionality.  An owner can see and alter the stock level, also need to handle stock request which is from store holder. Conversely, store holder may propose stock request to Owner as they need. All products from the distinct store can be added into the shopping cart by Customer. Also, when the user clicks "check out" button and input credit card numbers, the web will validate the numbers and type of card as normal shopping website.
+
