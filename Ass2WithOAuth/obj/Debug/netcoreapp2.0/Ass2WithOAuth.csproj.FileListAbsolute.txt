@@ -3,10 +3,10 @@ c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\bin\Debug\netcoreapp2.0\A
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\bin\Debug\netcoreapp2.0\Ass2WithOAuth.runtimeconfig.dev.json
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\bin\Debug\netcoreapp2.0\Ass2WithOAuth.dll
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\bin\Debug\netcoreapp2.0\Ass2WithOAuth.pdb
-c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\Ass2WithOAuth.csprojResolveAssemblyReference.cache
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\Ass2WithOAuth.csproj.CoreCompileInputs.cache
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\Ass2WithOAuth.AssemblyInfoInputs.cache
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\Ass2WithOAuth.AssemblyInfo.cs
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\Ass2WithOAuth.dll
 c:\users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\Ass2WithOAuth.pdb
 C:\Users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\user\source\repos\Ass2WithOAuth\Ass2WithOAuth\obj\Debug\netcoreapp2.0\Ass2WithOAuth.csprojAssemblyReference.cache
